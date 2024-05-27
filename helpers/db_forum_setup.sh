@@ -36,6 +36,8 @@ sudo docker run -d \
   --restart always \
   postgres:11.3-alpine
 
+sleep 30 # Ensure enough time for postgres database to initialize and create role
+
 sudo docker exec -i postgres psql -U admin -d forum <<-EOF
 create table posts (
     id SERIAL PRIMARY KEY,
